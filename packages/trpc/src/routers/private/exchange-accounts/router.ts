@@ -7,6 +7,8 @@ import { createExchangeAccount } from "./create-account/handler";
 import { ZCreateExchangeAccountInputSchema } from "./create-account/schema";
 import { updateExchangeAccount } from "./update-account/handler";
 import { ZUpdateExchangeAccountInputSchema } from "./update-account/schema";
+import { checkExchangeAccount } from "./check-account/handler";
+import { ZCheckExchangeAccountInputSchema } from "./check-account/schema";
 
 export const exchangeAccountsRouter = router({
   list: authorizedProcedure.query(getExchangeAccounts),
@@ -22,4 +24,8 @@ export const exchangeAccountsRouter = router({
   update: authorizedProcedure
     .input(ZUpdateExchangeAccountInputSchema)
     .mutation(updateExchangeAccount),
+
+  check: authorizedProcedure
+    .input(ZCheckExchangeAccountInputSchema)
+    .mutation(checkExchangeAccount),
 });
